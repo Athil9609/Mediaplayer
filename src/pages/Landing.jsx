@@ -13,7 +13,7 @@ function Landing() {
        <h2 className='mt-md-5'><i className="fa-brands fa-youtube " style={{color:"#d70909"}}></i> {' '} Media player</h2>
        <p style={{textAlign:'justify'}} className='mt-md-5'>Lorem ipsum dolor sit amet consectetur adipisicing elit. Officiis quaerat aperiam quia repellat vero? Obcaecati doloremque quisquam quasi ratione adipisci laborum fugit amet ab nesciunt? Quae consequuntur in nesciunt! Ratione.
        </p>
-        <div className='d-grid'><Link to={'/home'} className='btn btn-primary mt-5 '>Lets Go</Link></div>
+        <div className='d-grid'><Link to={'/login'} className='btn btn-primary mt-5 '>Lets Go</Link></div>
         </Col>
         <Col sm={12} md={6} className='px-5'>
         <img src="https://cdn-icons-png.flaticon.com/512/4647/4647453.png" alt="Intro image" className='img-fluid ms-md-5  ' />

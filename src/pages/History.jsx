@@ -1,10 +1,47 @@
-import React from 'react'
+import React,{useEffect,useState} from 'react'
+import { getHistory,deleteHistory } from '../services/allApis'
 
 function History() {
+
+
+
+  const [History,setHistory]=useState([])
+
+  useEffect(()=>{
+    getData()
+
+  },[])
+
+  const handleDelete=async(id)=>{
+   const res=await deleteHistory(id)
+   console.log(res)
+   if(res.status==200)
+   {
+    getData()
+   }
+   
+  }
+
+
+  const getData=async()=>{
+    const res= await getHistory()
+    console.log(res);
+
+    if(res.status==200){
+      setHistory(res.data)
+    }
+    else{
+      console.log(res);
+      
+    }
+
+  }
   return (
     <>
+ 
     <div className='p-5'> 
       <h1>Watch History</h1>
+      
       <table className='table table-bordered'>
         <thead>
           <tr>
@@ -16,14 +53,25 @@ function History() {
           </tr>
         </thead>
         <tbody>
-          <tr>
-            <td>1</td>
-            <td>Heeriye</td>
-            <td>https://www.youtube.com/watch?v=RLzC55ai0eo</td>
-            <td>27-8-24</td>
-            <td>        <button className="btn"><i className="fa-solid fa-trash " style={{color: "#ff0000",}} /> Delete</button>
+        {
+      History.map(item=>(
+        <tr>
+      
+      <td>{item.videoId}</td>
+            <td>{item.title}</td>
+            <td>{item.url}</td>
+            <td>{item.date}</td>
+            <td>        <button onClick={()=>{handleDelete(item.id)}} className="btn"><i className="fa-solid fa-trash " style={{color: "#ff0000",}} /> Delete</button>
             </td>
           </tr>
+          
+
+        
+      ))
+      
+      
+    }
+          
         </tbody>
       </table>
     </div>
